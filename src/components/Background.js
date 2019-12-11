@@ -2,13 +2,16 @@ import React from "react";
 import Card from "./Card";
 import Buttons from "./Buttons";
 
-function Background() {
-console.log('Hello from background')
+function Background(props) {
+    
+    const { pic } = props;
+    
     return (
-        <>
-            <Card/>
+        <div className="background">
+            {/* really cool background image */}
+            <Card pic={pic} />
             <Buttons/>
-        </>
+        </div>
     )
 }
 
