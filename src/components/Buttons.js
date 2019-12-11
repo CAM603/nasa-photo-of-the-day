@@ -1,10 +1,16 @@
 import React from "react";
 
 function Buttons() {
-    console.log('Hello from buttons')
+
+    const array = [2015, 2010, 2005, 2000, 1995];
 
     return (
-        null
+        <div className="buttons">
+            {array.map((year, index) => {
+                return <button key={index}>{year}</button>
+            })}
+
+        </div>
     )
 }
 

@@ -7,7 +7,12 @@ import { fakeObj } from "./object";
 function Grid() {
 
     const [pic, setPics] = useState();
+    const [title, setTitle] = useState();
+    const [date, setDate] = useState();
+    const [explanation, setExplanation] = useState();
+    
     const [filter, setFilter] = useState();
+
 
     // useEffect(() => {
     //     axios
@@ -23,12 +28,23 @@ function Grid() {
         console.log(fakeObj);
         const pic = fakeObj.data.hdurl;
         setPics(pic);
+        const title = fakeObj.data.title;
+        setTitle(title);
+        const date = fakeObj.data.date;
+        setDate(date);
+        const explanation = fakeObj.data.explanation;
+        setExplanation(explanation);
 
     }, []);
 
     return (
         <>
-            <Background pic={pic}/>
+            <Background 
+            pic={pic}
+            title={title}
+            date={date}
+            explanation={explanation}
+            />
         </>
     )
 }

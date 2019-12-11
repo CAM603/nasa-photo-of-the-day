@@ -1,10 +1,21 @@
 import React from "react";
+import Buttons from "./Buttons";
 
-function Card() {
-    console.log('Hello from Card')
+function Card(props) {
+    const { pic, title, date, explanation } = props;
 
     return (
-        null
+        <>
+        <div className="card" style={{width: '600px', background: 'slateGray'}}>
+            <h2>{title}</h2>
+            <h3>{date}</h3>
+            <div >
+                <img style={{width: '200px', height: '200px'}} src={pic}/>
+            </div>
+            <p>{explanation}</p>
+        </div>
+        <Buttons/>
+        </>
     )
 }
 
