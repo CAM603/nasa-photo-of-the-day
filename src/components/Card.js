@@ -10,7 +10,7 @@ function Card(props) {
             <h2>{title}</h2>
             <h3>{date}</h3>
             <div >
-                <img style={{width: '200px', height: '200px'}} src={pic}/>
+                <img style={{width: '200px', height: '200px'}} src={pic} alt="pic"/>
             </div>
             <p>{explanation}</p>
         </div>
