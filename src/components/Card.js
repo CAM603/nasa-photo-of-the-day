@@ -1,30 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import Buttons from "./Buttons";
+
+import styled from 'styled-components'
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Container
+    CardTitle, CardSubtitle, Button, Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap';
+
+    
+
 
 function MyCard(props) {
     const { pic, title, date, explanation, changeYear, yearsArray } = props;
 
+    const {
+        buttonLabel,
+        className
+    } = props;
+
+    const [modal, setModal] = useState(false);
+
+    const toggle = () => setModal(!modal);
+
     return (
-        <Container fluid="md">
-            <Card body >
+        <>
+            <Card style={{maxWidth: '500px'}}>
+                <CardImg src={pic} style={{maxWidth: '500px'}} alt="Nasa photo of the day"/>
                 <CardBody>
-                    <CardTitle>{title}</CardTitle>
-                    <CardSubtitle>{date}</CardSubtitle>
-                </CardBody>
-                <CardImg top width="100%" src={pic} alt="Nasa photo of the day"/>
-                <CardBody>
-                    <CardText>{explanation}</CardText>
+                <CardTitle>{title}</CardTitle>
+                <CardSubtitle>{date}</CardSubtitle>
+
+                <Button size="sm" color="danger" onClick={toggle}>Learn More</Button>
+                <Modal isOpen={modal} toggle={toggle} className={className}>
+                    <ModalHeader toggle={toggle}>{title}: {date}</ModalHeader>
+                    <ModalBody>
+                        <CardText>{explanation}</CardText>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={toggle}>Close</Button>
+                    </ModalFooter>
+                </Modal>
                 </CardBody>
                 <Buttons
                 changeYear={changeYear}
                 yearsArray={yearsArray}
                 />
             </Card>
-        </Container>
+        </>
     )
 }
 
