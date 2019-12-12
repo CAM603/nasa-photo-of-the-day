@@ -7,7 +7,7 @@ import axios from "axios";
 function Grid() {
 
     
-    // Lets get todays date and format it for url insertion
+    // Get todays date and format it for url insertion
     let today = new Date();
     const dd = String(today.getDate()).padStart(2, '0');
     const mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -21,6 +21,7 @@ function Grid() {
     const twentyFourYearsAgo = `${yyyy - 24}-${mm}-${dd}`;
     
     const yearsArray = [`${today}`,`date=${fiveYearsAgo}&`,`date=${tenYearsAgo}&`,`date=${fifteenYearsAgo}&`,`date=${twentyYearsAgo}&`,`date=${twentyFourYearsAgo}&`]
+    
     const [currentYear, setCurrentYear] = useState(today);
     const [data, setData] = useState([]);
     
@@ -37,6 +38,7 @@ function Grid() {
         });
         
     }, [currentYear]);
+
     const pic = data.hdurl;
     const title = data.title;
     const date = data.date;
