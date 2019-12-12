@@ -1,25 +1,31 @@
 import React from "react";
 import Buttons from "./Buttons";
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Container
+} from 'reactstrap';
 
-function Card(props) {
+function MyCard(props) {
     const { pic, title, date, explanation, changeYear, yearsArray } = props;
 
     return (
-        <>
-        <div className="card" style={{width: '600px', background: 'slateGray'}}>
-            <h2>{title}</h2>
-            <h3>{date}</h3>
-            <div >
-                <img style={{width: '200px', height: '200px'}} src={pic} alt="pic"/>
-            </div>
-            <p>{explanation}</p>
-        </div>
-        <Buttons
-        changeYear={changeYear}
-        yearsArray={yearsArray}
-        />
-        </>
+        <Container fluid="md">
+            <Card body >
+                <CardBody>
+                    <CardTitle>{title}</CardTitle>
+                    <CardSubtitle>{date}</CardSubtitle>
+                </CardBody>
+                <CardImg top width="100%" src={pic} alt="Nasa photo of the day"/>
+                <CardBody>
+                    <CardText>{explanation}</CardText>
+                </CardBody>
+                <Buttons
+                changeYear={changeYear}
+                yearsArray={yearsArray}
+                />
+            </Card>
+        </Container>
     )
 }
 
-export default Card;
+export default MyCard;
