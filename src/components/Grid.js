@@ -6,34 +6,42 @@ import axios from "axios";
 
 function Grid() {
 
-    const [url, setUrl] = useState();
-    const [year, setYear] = useState();
-
+    
     // Lets get todays date and format it for url insertion
     let today = new Date();
     const dd = String(today.getDate()).padStart(2, '0');
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
-
-    today = `${}`
-
-
-
-
-    const yearsArray = ['date=2015-04-20&','date=2015-04-20&','date=2015-04-20&','date=2015-04-20&','date=2015-04-20&']
-
+    
+    today = `${yyyy}-${mm}-${dd}`;
+    const fiveYearsAgo = `${yyyy - 5}-${mm}-${dd}`;
+    const tenYearsAgo = `${yyyy - 10}-${mm}-${dd}`;
+    const fifteenYearsAgo = `${yyyy - 15}-${mm}-${dd}`;
+    const twentyYearsAgo = `${yyyy - 20}-${mm}-${dd}`;
+    const twentyFiveYearsAgo = `${yyyy - 25}-${mm}-${dd}`;
+    
+    const yearsArray = [`date=${fiveYearsAgo}&`,`date=${tenYearsAgo}&`,`date=${fifteenYearsAgo}&`,`date=${twentyYearsAgo}&`,`date=${twentyFiveYearsAgo}&`]
+    const [currentYear, setCurrentYear] = useState(today);
+    const [data, setData] = useState([]);
+    
     useEffect(() => {
         axios
-        .get("https://api.nasa.gov/planetary/apod?api_key=Bw21GChImV11mec2NOlucGBUSzmTRPiLcEAVgdoX")
+        .get(`https://api.nasa.gov/planetary/apod?api_key=Bw21GChImV11mec2NOlucGBUSzmTRPiLcEAVgdoX`)
         .then(response => {
-            const url = response;
-            setUrl(url);
+            const data = response.data;
+            setData(data);
+            console.log(data)
         })
         .catch(error => {
             console.log(error)
         });
+        
     }, []);
-    
+    const pic = data.hdurl;
+    const title = data.title;
+    const date = data.date;
+    const explanation = data.explanation;
+    //const pic = data.hdurl;
     // useEffect(() => {
     //     const pic = fakeObj.data.hdurl;
     //     setPics(pic);
@@ -49,7 +57,10 @@ function Grid() {
     return (
         <>
             <Background 
-            url={url}
+            pic={pic}
+            title={title}
+            date={date}
+            explanation={explanation}
             />
         </>
     )
