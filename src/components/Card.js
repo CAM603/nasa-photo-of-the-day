@@ -2,7 +2,7 @@ import React from "react";
 import Buttons from "./Buttons";
 
 function Card(props) {
-    const { pic, title, date, explanation } = props;
+    const { pic, title, date, explanation, changeYear, yearsArray } = props;
 
     return (
         <>
@@ -14,7 +14,10 @@ function Card(props) {
             </div>
             <p>{explanation}</p>
         </div>
-        <Buttons/>
+        <Buttons
+        changeYear={changeYear}
+        yearsArray={yearsArray}
+        />
         </>
     )
 }

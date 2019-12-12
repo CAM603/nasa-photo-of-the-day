@@ -1,15 +1,16 @@
 import React from "react";
 
-function Buttons() {
+function Buttons(props) {
 
-    const array = [2015, 2010, 2005, 2000, 1995];
+    const { yearsArray, changeYear } = props;
+    const buttonLable = ['Today', 'Five Years Ago', 'Ten Years Ago', '15 Years Ago', '20 Years Ago', '25 Years Ago'];
+    
 
     return (
         <div className="buttons">
-            {array.map((year, index) => {
-                return <button key={index}>{year}</button>
+            {yearsArray.map((year, index) => {
+            return <button onClick={() => changeYear(year)} key={index}>{year.match(/[0-9,-]/g)}</button>
             })}
-
         </div>
     )
 }
