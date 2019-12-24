@@ -44,6 +44,7 @@ function Grid() {
     const title = data.title;
     const date = data.date;
     const explanation = data.explanation;
+    const media = data.media_type;
     
     const changeYear = year => {
         setCurrentYear(year)
@@ -58,6 +59,7 @@ function Grid() {
             explanation={explanation}
             changeYear={changeYear}
             yearsArray={yearsArray}
+            media={media}
             />
         </>
     )

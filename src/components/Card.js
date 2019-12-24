@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Buttons from "./Buttons";
+import { Player } from 'video-react';
 
-import styled from 'styled-components'
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, Modal, ModalHeader, ModalBody, ModalFooter
@@ -11,7 +11,7 @@ import {
 
 
 function MyCard(props) {
-    const { pic, title, date, explanation, changeYear, yearsArray } = props;
+    const { pic, title, date, explanation, changeYear, yearsArray, media } = props;
 
     const {
         className
@@ -24,8 +24,10 @@ function MyCard(props) {
     return (
         <>
             <Card style={{maxWidth: '500px'}}>
-                <CardImg src={pic} style={{maxWidth: '500px'}} alt="Nasa photo of the day"/>
+                {media === 'video' ? <Player src={pic} alt="Nasa photo of the day"/>  : <CardImg src={pic} style={{maxWidth: '500px'}} alt="Nasa photo of the day"/>}
+                
                 <CardBody>
+                
                     <CardTitle>{title}</CardTitle>
                     <CardSubtitle>{date}</CardSubtitle>
                     <br></br>

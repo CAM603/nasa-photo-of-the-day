@@ -5,7 +5,7 @@ import MyCard from "./Card";
 
 function Background(props) {
     
-    const { pic, title, date, explanation, changeYear, yearsArray} = props;
+    const { pic, title, date, explanation, changeYear, yearsArray, media} = props;
     return (
         <div className="background">
             {/* really cool background image */}
@@ -16,6 +16,7 @@ function Background(props) {
             explanation={explanation}
             changeYear={changeYear}
             yearsArray={yearsArray}
+            media={media}
             />
             
         </div>

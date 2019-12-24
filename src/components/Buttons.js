@@ -9,7 +9,7 @@ function Buttons(props) {
     return (
         <>
             {yearsArray.map((year, index) => {
-            return <Button size="sm" color="dark" onClick={() => changeYear(year)} key={index}>{year.match(/[0-9,-]/g)}</Button>
+            return <Button size="sm" color="primary" onClick={() => changeYear(year)} key={index}>{year.match(/[0-9,-]/g)}</Button>
             })}
         </>
     )
